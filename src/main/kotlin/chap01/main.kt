@@ -3,6 +3,7 @@ package chap01
 fun main() {
 
     val theater = Theater()
+    theater.setMovieFee(Money(12_000))
     val ticketInspector = TicketInspector(theater)
 
     val audience = TheaterAudience(amount = Money(50000), invitation = Invitation())

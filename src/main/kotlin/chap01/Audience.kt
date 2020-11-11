@@ -10,8 +10,8 @@ interface TicketBuyer {
 }
 
 class TheaterAudience(
-    private var amount: Money,
-    private var invitation: Invitation? = null
+    var amount: Money,
+    var invitation: Invitation? = null
 ) : Audience, TicketBuyer {
 
     private var ticket: Ticket = Ticket.EMPTY
