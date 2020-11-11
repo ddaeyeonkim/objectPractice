@@ -6,9 +6,9 @@ fun main() {
     theater.setMovieFee(Money(12_000))
     val ticketInspector = TicketInspector(theater)
 
-    val audience = TheaterAudience(amount = Money(50000), invitation = Invitation())
+    val audience = TheaterAudience(amount = Money(50_000), invitation = Invitation())
 
-    val ticketOffice = TicketOffice(theater, Money(100000))
+    val ticketOffice = TicketOffice(theater, Money(100_000))
     ticketOffice.addTickets(100)
 
     val ticketSeller = TicketSeller(ticketOffice)
