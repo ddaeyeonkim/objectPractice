@@ -19,7 +19,7 @@ class TheaterAudience(
     override fun getTicket(): Ticket = ticket
 
     override fun enterTheater(ticketInspector: TicketInspector): Boolean {
-        return ticketInspector.inspect(this)
+        return ticketInspector.inspect(ticket)
     }
 
     override fun buyTicket(ticketSeller: TicketSeller) {
