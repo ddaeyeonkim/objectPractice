@@ -9,10 +9,12 @@ class Ticket(var theater: Theater? = null) {
     }
 
     fun validate(theater: Theater): Boolean {
-        return this != EMPTY && this.theater == theater && !isUsed
+        return isNotEmpty() && this.theater == theater && !isUsed
     }
 
     fun getFee() = theater?.getMovieFee() ?: Money.EMPTY
+
+    fun isNotEmpty() = this != EMPTY
 
     companion object {
         val EMPTY = Ticket()

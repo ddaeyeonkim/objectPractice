@@ -25,13 +25,13 @@ class TheaterAudience(
     override fun buyTicket(ticketSeller: TicketSeller) {
         if (invitation != null) {
             ticket = ticketSeller.getTicket(invitation)
-            if (ticket != Ticket.EMPTY) {
+            if (ticket.isNotEmpty()) {
                 invitation = null
             }
         } else {
             val fee = ticketSeller.getMovieFee()
             ticket = ticketSeller.getTicket(fee)
-            if (ticket != Ticket.EMPTY) {
+            if (ticket.isNotEmpty()) {
                 minusAmount(fee)
             }
         }
