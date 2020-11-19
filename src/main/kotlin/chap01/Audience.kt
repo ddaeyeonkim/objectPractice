@@ -24,16 +24,23 @@ class TheaterAudience(
 
     override fun buyTicket(ticketSeller: TicketSeller) {
         if (invitation != null) {
-            ticket = ticketSeller.getTicket(invitation)
-            if (ticket.isNotEmpty()) {
-                invitation = null
-            }
+            buyTicketWithInvitation(ticketSeller, invitation)
         } else {
-            val fee = ticketSeller.getMovieFee()
-            ticket = ticketSeller.getTicket(fee)
-            if (ticket.isNotEmpty()) {
-                minusAmount(fee)
-            }
+            buyTicketWithAmount(ticketSeller, amount)
+        }
+    }
+
+    private fun buyTicketWithInvitation(ticketSeller: TicketSeller, invitation: Invitation?) {
+        ticket = invitation?.changeTicket(ticketSeller) ?: Ticket.EMPTY
+        if (ticket.isNotEmpty()) {
+            this.invitation = null
+        }
+    }
+
+    private fun buyTicketWithAmount(ticketSeller: TicketSeller, amount: Money) {
+        ticket = amount.changeTicket(ticketSeller)
+        if (ticket.isNotEmpty()) {
+            minusAmount(ticketSeller.getMovieFee())
         }
     }
 

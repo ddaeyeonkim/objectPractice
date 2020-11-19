@@ -1,6 +1,6 @@
 package chap01
 
-data class Money(private val amount: Long) : Comparable<Money> {
+data class Money(private val amount: Long) : Comparable<Money>, TicketValuable {
 
     operator fun plus(amount: Money) = Money(this.amount + amount.amount)
 
@@ -11,6 +11,10 @@ data class Money(private val amount: Long) : Comparable<Money> {
 
     override fun compareTo(other: Money): Int {
         return this.amount.compareTo(other.amount)
+    }
+
+    override fun changeTicket(ticketSeller: TicketSeller): Ticket {
+        return ticketSeller.getTicket(ticketSeller.getMovieFee())
     }
 
     companion object {
